@@ -1,0 +1,2 @@
+# JS_basics
+GitHub_JavaScript基礎で使用するリポジトリ
