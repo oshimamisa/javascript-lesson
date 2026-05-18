@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Truthy & Falsy Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .card { transition: transform 0.2s; }
+        .card:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-slate-800 mb-4">
+                Truthy <span class="text-indigo-500">&</span> Falsy
+            </h1>
+            <p class="text-lg text-slate-600">
+                JavaScriptにおいて、<span class="font-semibold text-orange-600">論理値（Boolean）が必要な場面</span>で「真」または「偽」と評価される値のことです。
+            </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Falsy Section -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-red-100 card">
+                <h2 class="text-2xl font-bold text-red-600 mb-4 flex items-center">
+                    <span class="mr-2">❌</span> Falsy (偽値)
+                </h2>
+                <p class="text-sm text-slate-500 mb-4">これらは `if` 文の中で `false` とみなされます。数は限られています。</p>
+                <ul class="space-y-2">
+                    <li class="flex justify-between p-2 bg-red-50 rounded text-red-800 font-mono"><span>false</span> <small>論理値の偽</small></li>
+                    <li class="flex justify-between p-2 bg-red-50 rounded text-red-800 font-mono"><span>0, -0, 0n</span> <small>数値のゼロ</small></li>
+                    <li class="flex justify-between p-2 bg-red-50 rounded text-red-800 font-mono"><span>""</span> <small>空の文字列</small></li>
+                    <li class="flex justify-between p-2 bg-red-50 rounded text-red-800 font-mono"><span>null</span> <small>値が存在しない</small></li>
+                    <li class="flex justify-between p-2 bg-red-50 rounded text-red-800 font-mono"><span>undefined</span> <small>定義されていない</small></li>
+                    <li class="flex justify-between p-2 bg-red-50 rounded text-red-800 font-mono"><span>NaN</span> <small>計算不能 (Not a Number)</small></li>
+                </ul>
+            </section>
+
+            <!-- Truthy Section -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 card">
+                <h2 class="text-2xl font-bold text-emerald-600 mb-4 flex items-center">
+                    <span class="mr-2">✅</span> Truthy (真値)
+                </h2>
+                <p class="text-sm text-slate-500 mb-4">Falsy以外のすべての値です。よく間違えやすい「真」の例：</p>
+                <ul class="space-y-2">
+                    <li class="flex justify-between p-2 bg-emerald-50 rounded text-emerald-800 font-mono"><span>"0"</span> <small>0という文字（空でない）</small></li>
+                    <li class="flex justify-between p-2 bg-emerald-50 rounded text-emerald-800 font-mono"><span>"false"</span> <small>falseという文字</small></li>
+                    <li class="flex justify-between p-2 bg-emerald-50 rounded text-emerald-800 font-mono"><span>[]</span> <small>空の配列</small></li>
+                    <li class="flex justify-between p-2 bg-emerald-50 rounded text-emerald-800 font-mono"><span>{}</span> <small>空のオブジェクト</small></li>
+                    <li class="flex justify-between p-2 bg-emerald-50 rounded text-emerald-800 font-mono"><span>Infinity</span> <small>無限大</small></li>
+                    <li class="flex justify-between p-2 bg-emerald-50 rounded text-emerald-800 font-mono"><span>123</span> <small>0以外の数値</small></li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Interactive Tool -->
+        <section class="bg-indigo-900 text-white p-8 rounded-3xl shadow-xl">
+            <h2 class="text-2xl font-bold mb-6 text-center">ライブ・チェッカー</h2>
+            <div class="flex flex-col gap-4">
+                <label class="text-indigo-200 text-sm">値を入力して判定（JavaScriptのコードとして評価します）:</label>
+                <input 
+                    type="text" 
+                    id="testerInput" 
+                    placeholder="例: [] や 0, 'hello'" 
+                    class="w-full p-4 rounded-xl text-slate-900 font-mono focus:outline-none focus:ring-4 focus:ring-indigo-400"
+                >
+                <div id="resultDisplay" class="mt-4 p-6 rounded-2xl text-center text-3xl font-black bg-indigo-800/50 min-h-[100px] flex items-center justify-center border-2 border-dashed border-indigo-700">
+                    結果がここに表示されます
+                </div>
+            </div>
+            <div class="mt-6 text-xs text-indigo-300 leading-relaxed">
+                <p>※ `if (value) { ... }` の中でどのように扱われるかをシミュレーションしています。</p>
+            </div>
+        </section>
+
+        <footer class="mt-12 text-center text-slate-400 text-sm">
+            <p>JavaScriptの基本：迷ったら「Falsyは8つだけ」と覚えましょう！</p>
+        </footer>
+    </div>
+
+    <script>
+        const input = document.getElementById('testerInput');
+        const display = document.getElementById('resultDisplay');
+
+        input.addEventListener('input', (e) => {
+            const val = e.target.value.trim();
+            
+            if (val === "") {
+                display.innerText = "何か入力してください";
+                display.className = "mt-4 p-6 rounded-2xl text-center text-xl font-bold bg-indigo-800/50 border-2 border-dashed border-indigo-700";
+                return;
+            }
+
+            try {
+                // 安全な範囲でevalのように文字列を評価（学習用シミュレーション）
+                let evaluated;
+                // 特殊なリテラルや数値を簡易判定
+                if (val === 'null') evaluated = null;
+                else if (val === 'undefined') evaluated = undefined;
+                else if (val === 'NaN') evaluated = NaN;
+                else if (val === 'true') evaluated = true;
+                else if (val === 'false') evaluated = false;
+                else if (!isNaN(val) && val !== '') evaluated = Number(val);
+                else if ((val.startsWith('[') && val.endsWith(']')) || (val.startsWith('{') && val.endsWith('}'))) {
+                    try { evaluated = JSON.parse(val.replace(/'/g, '"')); } catch { evaluated = val; }
+                } else {
+                    evaluated = val; // 基本は文字列として扱う
+                }
+
+                if (evaluated) {
+                    display.innerText = "✅ Truthy (真)";
+                    display.className = "mt-4 p-6 rounded-2xl text-center text-3xl font-black bg-emerald-500 text-white shadow-lg shadow-emerald-500/20";
+                } else {
+                    display.innerText = "❌ Falsy (偽)";
+                    display.className = "mt-4 p-6 rounded-2xl text-center text-3xl font-black bg-red-500 text-white shadow-lg shadow-red-500/20";
+                }
+            } catch (err) {
+                display.innerText = "判定エラー";
+                display.className = "mt-4 p-6 rounded-2xl text-center text-xl font-bold bg-amber-500 text-white";
+            }
+        });
+    </script>
+</body>
+</html>

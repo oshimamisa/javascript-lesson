@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typeof演算子：データ型チェックガイド</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fdf6ff;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #8e44ad;
+            text-align: center;
+            border-bottom: 2px solid #e1bee7;
+            padding-bottom: 10px;
+        }
+        .syntax-box {
+            background-color: #2d3436;
+            color: #55efc4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .explanation-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .example-item {
+            background: #f1f2f6;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .label {
+            font-weight: bold;
+            color: #d63031;
+        }
+        .result {
+            color: #0984e3;
+        }
+        .tip {
+            background-color: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>typeof 演算子って？</h1>
+        <p>JavaScriptの変数に入っているデータの種類（データ型）を調べるための魔法の言葉です。コンソールで「この中身、数字だっけ？文字列だっけ？」と迷った時に使います。</p>
+
+        <h2>基本の書き方</h2>
+        <div class="syntax-box">
+            typeof 調べたいもの
+        </div>
+
+        <div class="explanation-card">
+            <h2>コンソールでの実行例</h2>
+            <p>コンソールに直接打ち込んで結果を見てみましょう。返ってくる結果はすべて <strong>"文字列"</strong> です。</p>
+            
+            <div class="example-grid">
+                <div class="example-item">
+                    <span class="label">></span> typeof "Hello"<br>
+                    <span class="result">"string"</span> (文字列型)
+                </div>
+                <div class="example-item">
+                    <span class="label">></span> typeof 100<br>
+                    <span class="result">"number"</span> (数値型)
+                </div>
+                <div class="example-item">
+                    <span class="label">></span> typeof true<br>
+                    <span class="result">"boolean"</span> (論理型)
+                </div>
+                <div class="example-item">
+                    <span class="label">></span> typeof [1, 2]<br>
+                    <span class="result">"object"</span> (オブジェクト型)
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-card">
+            <h2>変数を使って調べる場合</h2>
+            <p>あらかじめ定義した変数の型を調べるのが一般的な使い方です。</p>
+            <div style="background: #2d3436; color: white; padding: 15px; border-radius: 5px; font-family: monospace;">
+                let myData = 123;<br>
+                console.log(typeof myData); // "number"
+            </div>
+        </div>
+
+        <div class="tip">
+            <strong>🐱 ここがポイント！</strong><br>
+            <ul>
+                <li><strong>配列に注意</strong>： <code>typeof [1, 2, 3]</code> は <code>"object"</code> と返ってきます。JavaScriptの歴史的な理由で、配列もオブジェクトの仲間として扱われるためです。</li>
+                <li><strong>小文字で返る</strong>： 結果は常に <code>"string"</code> や <code>"number"</code> のように小文字の文字列で返ってきます。</li>
+                <li><strong>未定義のチェック</strong>： まだ中身が入っていない変数には <code>"undefined"</code> が返ります。</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+このガイドでは、以下の内容を視覚的にまとめました。
+
+* **基本構文**: `typeof` の後に半角スペースを空けて対象を書くこと。
+* **代表的なデータ型**: 文字列、数値、真偽値、オブジェクトの例。
+* **注意点**: 配列が `object` になるという、初心者の方が特によく驚くポイント。
+
+右側のプレビューで確認しながら、実際にブラウザのコンソールを開いていろいろな値を `typeof` してみてくださいね。

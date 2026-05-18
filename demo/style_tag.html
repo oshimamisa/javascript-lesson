@@ -1,0 +1,80 @@
+<!-- ✅ styleタグを使用したコードの見本
+→ AIが書いてくれているグレーカラーの解説を読むといい、わかりやすい -->
+
+<!DOCTYPE html>
+<html lang="ja">s
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>styleタグの練習</title>
+
+    <!--
+        <style> タグはこのように <head> の中に書くのが一般的です。
+        ここに書かれたルールが、下の <body> 内の要素に適用されます。
+    -->
+    <style>
+        /* ページ全体の背景色とフォントを設定 */
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        /* カード（自己紹介の枠）のデザイン */
+        .profile-card {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 15px; /* 角を丸くする */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 影をつける */
+            text-align: center;
+        }
+
+        /* 名前のテキストの色を変更 */
+        .name {
+            color: #3498db;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        /* 肩書きのテキストのデザイン */
+        .title {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 0;
+        }
+
+        /* ボタンのデザイン */
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* ボタンにマウスを乗せた時の変化 */
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ここがHTMLの構造部分（骨組み） -->
+    <div class="profile-card">
+        <h2 class="name">名前 太郎</h2>
+        <p class="title">Webプログラミング学習中</p>
+        <p>こんにちは！現在HTMLとCSSの基礎を学んでいます。まずはstyleタグの使い方をマスターします！</p>
+        <a href="#" class="btn">フォローする</a>
+    </div>
+
+</body>
+</html>
