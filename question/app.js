@@ -72,6 +72,20 @@ console.log((playerList[0].age + playerList[1].age + playerList[2].age) / player
 平均年齢が正しくコンソールに出力されたのを確認済みです。
 
 
+🟡再直し playerListの[○]を修正せずに済むようなコードに書き換える
+
+let total = 0;
+
+for (let i = 0; i < playerList.length; i++) {
+  total += playerList[i].age;
+}
+console.log(total/playerList.length);
+
+ポイント
+⭕️playerList[i].age → playerList[1]のage、っていうイメージ
+❌playerList.age[i]
+
+
 
 // ポイント
 // playerListは配列なので直接favoritesにアクセスすることができない。
