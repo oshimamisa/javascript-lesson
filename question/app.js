@@ -64,6 +64,15 @@ console.log(playerList[1].favorites[1]);
 // Q4
 console.log((playerList[0].age + playerList[1].age + playerList[2].age) / 3);
 
+🟡直し Q. 要素の数が増えてもコード修正をせずに平均年齢が正しくコンソールに出力されるようにするには？
+console.log((playerList[0].age + playerList[1].age + playerList[2].age) / playerList.length);
+
+📝length➡️配列の要素の数を取得するもの　🟡配列名.length
+要素を1つ増やし、console.log((playerList[0].age + playerList[1].age + playerList[2].age + playerList[3].age) / playerList.length);で実行、
+平均年齢が正しくコンソールに出力されたのを確認済みです。
+
+
+
 // ポイント
 // playerListは配列なので直接favoritesにアクセスすることができない。
 // 配列の中のインデックス番号が何番目で、さらにその中の何番目の値を取り出したいのかを指定する。
@@ -160,7 +169,7 @@ user.sayHello();
 
 
 
-    // 🌟🌟Sec.６🌟🌟
+    // 🌟🌟 Sec.６ 応用編 🌟🌟
     // Q1　標準組み込みオブジェクト
     // 標準組み込みオブジェクト Math を使用し、0 ~ 9 のランダムな整数をコンソールに出力してください。
 
@@ -225,7 +234,8 @@ user.sayHello();
       console.log('num is 0');
   }
 
-  🟠else ifを使用してより簡潔にしてみる
+  
+  🟡直し else ifを使用してより簡潔にしてみる
 
 let num = 0;
 
@@ -248,6 +258,15 @@ for(let i=0; i <= 99; i++){
     console.log(i)
     numbers.push(i);
 };
+
+🟡直し 数字の出力ではなく、配列ごと出力をさせる
+
+let numbers = [];
+
+for(let i=0; i <= 99; i++){
+    numbers.push(i);
+};
+    console.log(numbers);
 
 
 Q5 for × if
