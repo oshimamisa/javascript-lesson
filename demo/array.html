@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配列 vs 連想配列（オブジェクト）ビジュアル比較シート</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .concept-card {
+            transition: all 0.3s ease;
+        }
+        .concept-card:hover {
+            transform: translateY(-4px);
+        }
+        /* ロッカー（配列）のアニメーション */
+        .locker {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .locker.active {
+            background-color: #3b82f6 !important;
+            border-color: #60a5fa !important;
+            color: white !important;
+            transform: scale(1.05);
+        }
+        /* 引き出し（オブジェクト）のアニメーション */
+        .drawer {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .drawer.active {
+            background-color: #f59e0b !important;
+            border-color: #fbbf24 !important;
+            color: white !important;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 text-slate-800">
+
+    <div class="max-w-5xl mx-auto">
+        <!-- ヘッダー -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">📦 配列 vs 連想配列（オブジェクト）</h1>
+            <p class="text-slate-600 text-lg">JavaScriptの超重要データ構造を、見て触って完全マスター！</p>
+        </header>
+
+        <!-- メタファー（例え話）のビジュアル比較 -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- 配列カード -->
+            <div class="bg-white rounded-2xl p-6 shadow-md border-t-8 border-blue-500 concept-card">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl">🎒</span>
+                    <h2 class="text-2xl font-bold text-blue-600">配列 (Array)</h2>
+                </div>
+                <p class="text-sm text-slate-500 mb-4 font-bold bg-blue-50 text-blue-700 px-3 py-1 rounded-md inline-block">イメージ：出席番号付きのロッカー</p>
+                <p class="text-slate-600 mb-4 leading-relaxed">
+                    同じ種類のデータを<strong>順番（出席番号）</strong>に並べて管理します。
+                    中身を呼び出すときは、<code>[0]</code> や <code>[1]</code> のように自動で決まる<strong>「インデックス番号（添え字）」</strong>を使います。
+                </p>
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-sm">
+                    <span class="text-pink-400">let</span> list = [<span class="text-emerald-400">'赤'</span>, <span class="text-emerald-400">'青'</span>, <span class="text-emerald-400">'黄'</span>];<br>
+                    console.log(list[<span class="text-amber-400">0</span>]); <span class="text-slate-500">// ➔ '赤'</span>
+                </div>
+            </div>
+
+            <!-- 連想配列（オブジェクト）カード -->
+            <div class="bg-white rounded-2xl p-6 shadow-md border-t-8 border-amber-500 concept-card">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl">🗂️</span>
+                    <h2 class="text-2xl font-bold text-amber-600">連想配列 (オブジェクト)</h2>
+                </div>
+                <p class="text-sm text-slate-500 mb-4 font-bold bg-amber-50 text-amber-700 px-3 py-1 rounded-md inline-block">イメージ：ラベルが貼られた引き出し</p>
+                <p class="text-slate-600 mb-4 leading-relaxed">
+                    データの順番は気にせず、自分で決めた<strong>「ラベル名（キー）」</strong>を使って管理します。
+                    中身を呼び出すときは、<code>.name</code> のように指定したキーを使います。
+                </p>
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-sm">
+                    <span class="text-pink-400">let</span> user = { name: <span class="text-emerald-400">'John'</span>, age: <span class="text-amber-400">26</span> };<br>
+                    console.log(user.<span class="text-amber-400">name</span>); <span class="text-slate-500">// ➔ 'John'</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- インタラクティブ・シミュレーター -->
+        <div class="bg-white rounded-2xl p-6 shadow-md mb-8">
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <span>🎮</span> 体感シミュレーター：ボタンを押してアクセスしてみよう！
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 配列の動的エリア -->
+                <div class="bg-blue-50/50 rounded-xl p-5 border border-blue-100">
+                    <h3 class="font-bold text-lg text-blue-800 mb-2">配列：<code>colors</code> の中身</h3>
+                    <p class="text-sm text-slate-500 mb-4">番号（ロッカー番号）を使って中身を取り出します。</p>
+                    
+                    <!-- ビジュアルロッカー -->
+                    <div class="flex gap-3 justify-center my-6">
+                        <div id="locker-0" class="locker w-24 h-24 bg-white border-2 border-blue-200 rounded-lg flex flex-col items-center justify-center shadow-sm">
+                            <span class="text-xs text-blue-500 font-bold font-mono">index [0]</span>
+                            <span class="text-2xl mt-1">🍎</span>
+                            <span class="text-xs text-slate-500 mt-1 font-bold">りんご</span>
+                        </div>
+                        <div id="locker-1" class="locker w-24 h-24 bg-white border-2 border-blue-200 rounded-lg flex flex-col items-center justify-center shadow-sm">
+                            <span class="text-xs text-blue-500 font-bold font-mono">index [1]</span>
+                            <span class="text-2xl mt-1">🍌</span>
+                            <span class="text-xs text-slate-500 mt-1 font-bold">バナナ</span>
+                        </div>
+                        <div id="locker-2" class="locker w-24 h-24 bg-white border-2 border-blue-200 rounded-lg flex flex-col items-center justify-center shadow-sm">
+                            <span class="text-xs text-blue-500 font-bold font-mono">index [2]</span>
+                            <span class="text-2xl mt-1">🍇</span>
+                            <span class="text-xs text-slate-500 mt-1 font-bold">ぶどう</span>
+                        </div>
+                    </div>
+
+                    <!-- 操作ボタン -->
+                    <div class="flex flex-wrap gap-2 justify-center mb-4">
+                        <button onclick="triggerArray(0)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2 px-3 rounded shadow transition-all">
+                            colors[0] を覗く
+                        </button>
+                        <button onclick="triggerArray(1)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2 px-3 rounded shadow transition-all">
+                            colors[1] を覗く
+                        </button>
+                        <button onclick="triggerArray(2)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2 px-3 rounded shadow transition-all">
+                            colors[2] を覗く
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 連想配列（オブジェクト）の動的エリア -->
+                <div class="bg-amber-50/50 rounded-xl p-5 border border-amber-100">
+                    <h3 class="font-bold text-lg text-amber-800 mb-2">連想配列：<code>user</code> の中身</h3>
+                    <p class="text-sm text-slate-500 mb-4">キー（引き出しのラベル）を使って中身を取り出します。</p>
+
+                    <!-- ビジュアル引き出し -->
+                    <div class="flex gap-3 justify-center my-6">
+                        <div id="drawer-name" class="drawer w-24 h-24 bg-white border-2 border-amber-200 rounded-lg flex flex-col items-center justify-center shadow-sm">
+                            <span class="text-[10px] text-amber-600 font-bold font-mono">key: name</span>
+                            <span class="text-lg font-bold mt-1 text-slate-700">'John'</span>
+                            <span class="text-[10px] text-slate-400 mt-1">名前</span>
+                        </div>
+                        <div id="drawer-age" class="drawer w-24 h-24 bg-white border-2 border-amber-200 rounded-lg flex flex-col items-center justify-center shadow-sm">
+                            <span class="text-[10px] text-amber-600 font-bold font-mono">key: age</span>
+                            <span class="text-lg font-bold mt-1 text-slate-700">26</span>
+                            <span class="text-[10px] text-slate-400 mt-1">年齢</span>
+                        </div>
+                        <div id="drawer-blood" class="drawer w-24 h-24 bg-white border-2 border-amber-200 rounded-lg flex flex-col items-center justify-center shadow-sm">
+                            <span class="text-[10px] text-amber-600 font-bold font-mono">key: blood</span>
+                            <span class="text-lg font-bold mt-1 text-slate-700">'A'</span>
+                            <span class="text-[10px] text-slate-400 mt-1">血液型</span>
+                        </div>
+                    </div>
+
+                    <!-- 操作ボタン -->
+                    <div class="flex flex-wrap gap-2 justify-center mb-4">
+                        <button onclick="triggerObject('name')" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs py-2 px-3 rounded shadow transition-all">
+                            user.name を覗く
+                        </button>
+                        <button onclick="triggerObject('age')" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs py-2 px-3 rounded shadow transition-all">
+                            user.age を覗く
+                        </button>
+                        <button onclick="triggerObject('blood')" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs py-2 px-3 rounded shadow transition-all">
+                            user.blood を覗く
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 連動ログ表示 -->
+            <div class="mt-6 bg-slate-900 rounded-xl p-4 font-mono text-sm text-emerald-400 relative">
+                <span class="absolute top-2 right-3 text-xs text-slate-500 select-none">Console Log Output</span>
+                <p id="sim-log" class="mt-2 text-base">> ボタンを押すとここに結果が表示されます。</p>
+            </div>
+        </div>
+
+        <!-- データの追加方法比較 -->
+        <div class="bg-white rounded-2xl p-6 shadow-md">
+            <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span>➕</span> 途中で新しいデータを追加したいときは？
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-bold text-blue-700 mb-2">配列の場合（末尾に追加）</h3>
+                    <p class="text-sm text-slate-600 mb-2"><code>push()</code> という命令を使い、新しいロッカーを自動でお尻に作ります。</p>
+                    <pre class="bg-slate-950 text-white p-3 rounded-lg text-xs font-mono"><span class="text-blue-400">colors.push</span>(<span class="text-emerald-300">'🍓'</span>);<br><span class="text-slate-400">// colors[3] に '🍓' が入る</span></pre>
+                </div>
+                <div>
+                    <h3 class="font-bold text-amber-700 mb-2">連想配列の場合（自由に追加）</h3>
+                    <p class="text-sm text-slate-600 mb-2"><code>.新しいキー = バリュー</code> の形で、好きなラベル名（キー）の引き出しを直接作ります。</p>
+                    <pre class="bg-slate-950 text-white p-3 rounded-lg text-xs font-mono"><span class="text-amber-400">user.birthday</span> = <span class="text-emerald-300">'1999-06-22'</span>;<br><span class="text-slate-400">// userにbirthdayキーが新しく作られる</span></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- まとめ表 -->
+        <div class="mt-8 text-center">
+            <p class="text-sm text-slate-500">
+                💡 「出席番号順のロッカー」なら普通の配列！ 「名前付きラベルの引き出し」なら連想配列（オブジェクト）！
+            </p>
+        </div>
+    </div>
+
+    <!-- インタラクティブ処理用のJavaScript -->
+    <script>
+        // 配列のシミュレーション
+        const arrayData = ['🍎 りんご', '🍌 バナナ', '🍇 ぶどう'];
+        function triggerArray(index) {
+            // 全ロッカーのハイライトをリセット
+            document.querySelectorAll('.locker').forEach(el => el.classList.remove('active'));
+            
+            // 指定のロッカーをハイライト
+            const locker = document.getElementById(`locker-${index}`);
+            if (locker) {
+                locker.classList.add('active');
+            }
+            
+            // ログを表示
+            const logBox = document.getElementById('sim-log');
+            logBox.innerHTML = `<span class="text-blue-400">colors[${index}]</span> ➔ <span class="text-white">"${arrayData[index]}"</span>`;
+        }
+
+        // 連想配列（オブジェクト）のシミュレーション
+        const objectData = {
+            name: '"John" (名前)',
+            age: '26 (年齢)',
+            blood: '"A" (血液型)'
+        };
+        function triggerObject(key) {
+            // 全引き出しのハイライトをリセット
+            document.querySelectorAll('.drawer').forEach(el => el.classList.remove('active'));
+            
+            // 指定の引き出しをハイライト
+            const drawer = document.getElementById(`drawer-${key}`);
+            if (drawer) {
+                drawer.classList.add('active');
+            }
+            
+            // ログを表示
+            const logBox = document.getElementById('sim-log');
+            logBox.innerHTML = `<span class="text-amber-400">user.${key}</span> ➔ <span class="text-white">${objectData[key]}</span>`;
+        }
+    </script>
+</body>
+</html>

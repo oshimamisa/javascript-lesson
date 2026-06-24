@@ -128,7 +128,17 @@ sayWorld();
 // ❷ Q3 で定義した変数 user に Hello！とコンソールに出力するメソッド sayHello を追加し、実行してください。
 // ※ いずれも Q3 で定義した変数 user を直接書き換えないこと →✅これできてるのか？
 
+Q3
+let user = {
+  name: 'John',
+  age: 26,
+  bloodType: 'A',
+  favorite: 'card',
+};
 
+console.log(user.age);
+
+// -------------------------------------
 
 user.birthday = '2000-09-27';
 user.sayHello = function(){
@@ -180,6 +190,41 @@ user.sayHello();
     // let calcで空のオブジェクトを作って、その中にキー(今回はメソッド)を追加した上で、
     // そのメソッドをconsole.logで呼び出す。
     // そして例：7になるように実行してください、は7になる数字で試してみてください、っていう意味
+
+
+    // Q9 2 つの引数 x, y を受け取り、x を y で割った剰余を返り値とする関数 remainder を定義し、
+    // 5 と 3 を引数に渡して実行した返り値を用いて文字列連結で以下のようにコンソールに出力してください。
+
+    // ➡️ 5 を 3 で割った余りは 2 です。
+
+      function remainder(x,y){
+      let divide = (x % y);
+      return divide;
+      }
+    
+    let result = remainder(5,3);
+    console.log(`${5}を${3}で割った余りは${result}です。`);
+
+    // Q10 スコープ
+    // 下記の console.log(x); においてコンソールに 1 が出力されることはなく、
+    // x is not defined（変数 x が定義されていない）というエラーが出力されます。
+    // その理由を以下 2 つの単語を使用し app.js にコメントアウトで回答してください。
+    // ➡️ スコープ、参照
+      
+    ここから
+    function foo() {
+      let x = 1;
+      }
+    console.log(x);
+    ここまで
+
+    // 🟡解答
+    // JavaScriptでは、関数の中で定義した関数はその定義された関数の中でしか参照ができない。
+    // 今回の場合、function foo内で定義しているxは、function foo内でしか参照できないにも関わらず、
+    // その関数外から参照しコンソール出力しようとしている。
+    // そのため定義されていないxを呼び出すことはできず、x is not definedというエラーが出力されている。
+
+
 
 
 

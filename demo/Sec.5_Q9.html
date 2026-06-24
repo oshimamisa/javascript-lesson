@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 基礎学習ロードマップ＆要点まとめ</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+        }
+        .roadmap-line {
+            position: absolute;
+            left: 28px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #cbd5e1;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="text-slate-800 p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- ヘッダー -->
+        <header class="text-center mb-12 bg-gradient-to-r from-indigo-600 to-blue-500 text-white p-8 rounded-3xl shadow-lg relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0))]"></div>
+            <span class="text-4xl mb-3 block">🚀</span>
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">JS 基礎学習ロードマップ</h1>
+            <p class="text-indigo-100">大島さんがマスターした超重要基本コンセプトの要点まとめ</p>
+        </header>
+
+        <!-- メインタイムライン -->
+        <div class="relative pl-0 md:pl-8">
+            <!-- スマホ画面以上で表示されるタイムライン縦線 -->
+            <div class="roadmap-line hidden md:block"></div>
+
+            <!-- STEP 1 -->
+            <div class="relative flex flex-col md:flex-row gap-6 mb-12 z-10">
+                <div class="flex items-center md:absolute md:left-[-24px] md:top-2">
+                    <span class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-600 text-white font-bold text-lg shadow-md">1</span>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex-1 md:ml-12">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <span>💬</span> 変数とテンプレートリテラル
+                        </h2>
+                        <span class="text-xs bg-indigo-50 text-indigo-700 font-bold px-2 py-1 rounded-md">完了</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <code>let</code> を使ってデータを箱に入れ、バッククォート（<code>`</code>）と <code>${}</code> を使って文字列の中に変数を埋め込む方法を学びました。
+                    </p>
+                    <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs overflow-x-auto">
+                        <span class="text-pink-400">let</span> nickname = <span class="text-emerald-400">'Oshima Misa'</span>;<br>
+                        console.log(<span class="text-emerald-400">`私の名前は${</span>nickname<span class="text-emerald-400">}です。`</span>);
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="relative flex flex-col md:flex-row gap-6 mb-12 z-10">
+                <div class="flex items-center md:absolute md:left-[-24px] md:top-2">
+                    <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white font-bold text-lg shadow-md">2</span>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex-1 md:ml-12">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <span>📦</span> 配列とオブジェクト（連想配列）
+                        </h2>
+                        <span class="text-xs bg-blue-50 text-blue-700 font-bold px-2 py-1 rounded-md">完了</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>配列</strong>（出席番号のロッカー <code>[]</code>）と、<strong>オブジェクト</strong>（ラベル付き引き出し <code>{}</code>）の違いを理解しました。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <span class="font-bold text-xs text-blue-600 block mb-1">配列 (ロッカー)</span>
+                            <code class="text-xs text-slate-700 font-mono">let list = ['J', 'P'];<br>list[0]; //➔ 'J'</code>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <span class="font-bold text-xs text-amber-600 block mb-1">オブジェクト (引き出し)</span>
+                            <code class="text-xs text-slate-700 font-mono">let user = { name: 'John' };<br>user.name; //➔ 'John'</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="relative flex flex-col md:flex-row gap-6 mb-12 z-10">
+                <div class="flex items-center md:absolute md:left-[-24px] md:top-2">
+                    <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white font-bold text-lg shadow-md">3</span>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex-1 md:ml-12">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <span>🔄</span> ループ処理と平均値の計算
+                        </h2>
+                        <span class="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-1 rounded-md">完了</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        大量のデータを全自動で計算する仕組みを作りました。<code>for...of文</code>や従来の<code>for文</code>、そして自動で長さを数える <code>.length</code> を使って平均年齢を導き出せるようになりました。
+                    </p>
+                    <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs overflow-x-auto">
+                        <span class="text-pink-400">let</span> total = <span class="text-amber-400">0</span>;<br>
+                        <span class="text-pink-400">for</span> (<span class="text-pink-400">let</span> i = <span class="text-amber-400">0</span>; i < playerList.<span class="text-cyan-400">length</span>; i++) {<br>
+                        &nbsp;&nbsp;total += playerList[i].<span class="text-cyan-400">age</span>;<br>
+                        }<br>
+                        console.log(total / playerList.<span class="text-cyan-400">length</span>);
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="relative flex flex-col md:flex-row gap-6 mb-12 z-10">
+                <div class="flex items-center md:absolute md:left-[-24px] md:top-2">
+                    <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500 text-white font-bold text-lg shadow-md">4</span>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex-1 md:ml-12">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <span>⚙️</span> 関数・引数・返り値 (return)
+                        </h2>
+                        <span class="text-xs bg-amber-50 text-amber-700 font-bold px-2 py-1 rounded-md">完了</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        処理を一つのパッケージとして定義し、後から好きな時に <code>()</code> のトリガーで起動させる仕組み。引数（パラメータ）を受け取り、<code>return</code> を使って結果を外側に投げる（戻す）設計をマスターしました。
+                    </p>
+                    <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs overflow-x-auto">
+                        <span class="text-pink-400">function</span> remainder(x, y) {<br>
+                        &nbsp;&nbsp;<span class="text-pink-400">return</span> x % y;<br>
+                        }<br>
+                        <span class="text-pink-400">let</span> result = remainder(<span class="text-amber-400">5</span>, <span class="text-amber-400">3</span>);
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 理解度クイックチェック -->
+        <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-md mb-8">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span>🎯</span> 自分用の復習クイズチェック！
+            </h2>
+            <p class="text-sm text-slate-400 mb-6">以下の記述を見て、頭の中で答えをイメージしながら「チェック」をクリックして確認してみましょう！</p>
+
+            <div class="space-y-4">
+                <!-- クイズ 1 -->
+                <div class="border-b border-slate-800 pb-4">
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="q1" class="mt-1 w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500">
+                        <label for="q1" class="text-sm font-medium cursor-pointer">
+                            Q1. 配列 <code>['apple', 'banana']</code> の最後に「ぶどう」を追加する正しい命令は？
+                            <span class="block text-xs text-slate-500 mt-1 select-none">👉 クリックで答えを確認する: <code>配列名.push('ぶどう')</code></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- クイズ 2 -->
+                <div class="border-b border-slate-800 pb-4">
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="q2" class="mt-1 w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500">
+                        <label for="q2" class="text-sm font-medium cursor-pointer">
+                            Q2. オブジェクト <code>let user = {}</code> に新しく <code>age</code> キーと値 <code>29</code> を設定する方法は？
+                            <span class="block text-xs text-slate-500 mt-1 select-none">👉 クリックで答えを確認する: <code>user.age = 29;</code></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- クイズ 3 -->
+                <div class="pb-2">
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="q3" class="mt-1 w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500">
+                        <label for="q3" class="text-sm font-medium cursor-pointer">
+                            Q3. 関数名の後ろにつける <code>()</code> の主な役割は何？
+                            <span class="block text-xs text-slate-500 mt-1 select-none">👉 クリックで答えを確認する: 「中身の処理を実際に実行（起動）させる」ためのスイッチ</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 激励のメッセージ -->
+        <div class="text-center bg-indigo-50 p-6 rounded-2xl border border-indigo-100 text-indigo-800 text-sm font-medium">
+            💡 あなたのJavaScript習得度は非常にスムーズです！次のステップへ進む準備はいつでもOKですよ！
+        </div>
+    </div>
+
+</body>
+</html>
